@@ -7,12 +7,13 @@ namespace E_Commerce_System
 {
     public class Product
     {
-        public Dictionary<int, KeyValuePair<string, int>> Products { get; set; }
-        public Product() 
+        public SortedDictionary<int, KeyValuePair<string, int>> Products { get; set; }
+        public Product()
         {
-        //-----------------------------ID---------------Name----Price-----------
-            Products = new Dictionary<int, KeyValuePair<string, int>>
+            //-----------------------------ID---------------Name----Price-----------
+            Products = new SortedDictionary<int, KeyValuePair<string, int>>
             {
+                {122 , new KeyValuePair<string, int>("Stand laptob" , 250) },
                 {123 , new KeyValuePair<string, int>("iphone 15" , 30000)  },
                 {124 , new KeyValuePair<string, int>("iphone 13" , 20000)  },
                 {125 , new KeyValuePair<string, int>("Lenovo LOQ", 35000)  },
@@ -23,23 +24,23 @@ namespace E_Commerce_System
                 {130 , new KeyValuePair<string, int>("Keyboard lenovo",700)}
             };
         }
-        public void Add_product(int id,string name,int price) // for employee
-        {
-            Products.Add(id, new KeyValuePair<string, int>(name, price));
-        }
-        public void Remove_product(int id) { Products.Remove(id); }
-        public void Update_product_price(int id, int price)
-        {
-            if (Products.ContainsKey(id))
+          public void Add_product(int id, string name, int price) // for employee
+          {
+               Products.Add(id, new KeyValuePair<string, int>(name, price));
+          }
+            public void Remove_product(int id) { Products.Remove(id); }
+            public void Update_product_price(int id, int price)
             {
-                var product = Products[id];
-                Products[id] = new KeyValuePair<string, int>(product.Key, price);
+                if (Products.ContainsKey(id))
+                {
+                    var product = Products[id];
+                    Products[id] = new KeyValuePair<string, int>(product.Key, price);
+                }
+                else
+                {
+                    Console.WriteLine("Product not found.");
+                }
             }
-            else
-            {
-                Console.WriteLine("Product not found.");
-            }
-        }
 
-    }
-}
+        }
+     } 

@@ -22,7 +22,7 @@ namespace E_Commerce_System
         {
             no_order++;
             order1.Total_price = 0;
-            order1.BuyProduct = new Dictionary<int , KeyValuePair<string, int>>();
+            order1.BuyProduct = new SortedDictionary<int , KeyValuePair<string, int>>();
             order1.nameofclient = n;
             order1.phone = ph;
             order1.paymentway = pay;
@@ -34,6 +34,7 @@ namespace E_Commerce_System
             {
                 if (i.Key == noorder)
                 { return i.Value; }
+                else Console.WriteLine($"Order with number {noorder} not found.");
             }
             throw new Exception($"Order with number {noorder} not found.");
         }
