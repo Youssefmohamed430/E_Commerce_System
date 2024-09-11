@@ -99,7 +99,10 @@ namespace E_Commerce_System
             Console.WriteLine("Are you need to do any operation? ");
             string opp = Console.ReadLine();
             if (opp == "yes") { Console.Clear(); display(); }
-            else return;
+            else {
+                Console.WriteLine("Thanks");
+                return;
+            }
         }
     }
 }
