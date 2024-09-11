@@ -56,6 +56,12 @@ namespace E_Commerce_System
                     Console.WriteLine($"ID : {i.Key} | Name : {i.Value.Key} | Price : {i.Value.Value}");
                 }
             }
+            Console.WriteLine("Are you need to do anything ?");
+            string anything = Console.ReadLine();
+            if (anything == "yes")
+                display();
+            else
+                return;
         }
     }
 }

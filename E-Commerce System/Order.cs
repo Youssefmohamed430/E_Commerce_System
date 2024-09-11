@@ -34,6 +34,7 @@ namespace E_Commerce_System
             {
                 if (i.Key == noorder)
                 { return i.Value; }
+                else Console.WriteLine($"Order with number {noorder} not found.");
             }
             throw new Exception($"Order with number {noorder} not found.");
         }
