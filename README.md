@@ -1,6 +1,6 @@
 <h2>Hello , This is a description for My project "E_Commerce_System"</h2>
-<p>This project I did for training on C# and basics of programming to become Backend .NET Developer</p>
-<p>I focused on some Basic Points to train on them : </p>
+<h3>This project I did for training on C# and basics of programming to become Backend .NET Developer</h3>
+<h4>I focused on some Basic Points to train on them : </h4>
 <ul>
   <li>
     <b>Basics of Programming</b>
@@ -37,7 +37,7 @@
     <ul><li>Git&Github</li></ul>
   </li>
 </ul>
-<p>What are uses to this the project? </p>
+<h5>What are uses to this the project? </h5>
 <ul>
   <li>It has a simple database of products and some methods to Manage this products</li>
   <ul>
