@@ -12,6 +12,6 @@ namespace Data_type
             public string phone { get; set; }
             public string paymentway { get; set; }
             public  int Total_price { get; set; }
-            public Dictionary<int, KeyValuePair<string, int>> BuyProduct { get; set; }
+            public SortedDictionary<int, KeyValuePair<string, int>> BuyProduct { get; set; }
         }
 }

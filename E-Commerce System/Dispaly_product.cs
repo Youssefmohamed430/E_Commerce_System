@@ -20,13 +20,12 @@ namespace E_Commerce_System
 
                 if (op == 1)
                 {
-                    foreach (var i in base.product.Products)
-                    {
-                        Console.WriteLine($"ID : {i.Key} | Name : {i.Value.Key} | Price : {i.Value.Value}");
-                    }
+                    Console.Clear();
+                    menu();
                 }
                 else if (op == 2)
                 {
+                    Console.Clear();
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Enter Name : ");
@@ -36,11 +35,13 @@ namespace E_Commerce_System
                     base.product.Add_product(id, name, pr);
                 }
                 else if (op == 3) {
+                    Console.Clear();
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     base.product.Remove_product(id);
                 }
                 else {
+                    Console.Clear();
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Enter price : ");
@@ -50,18 +51,26 @@ namespace E_Commerce_System
             }
             else
             {
-                Console.WriteLine("------------- Menu --------------");
-                foreach (var i in base.product.Products)
-                {
-                    Console.WriteLine($"ID : {i.Key} | Name : {i.Value.Key} | Price : {i.Value.Value}");
-                }
+                Console.Clear ();
+                menu();
             }
             Console.WriteLine("Are you need to do anything ?");
             string anything = Console.ReadLine();
             if (anything == "yes")
+            {
+                Console.Clear();
                 display();
+            }
             else
                 return;
+        }
+        public void menu()
+        {
+            Console.WriteLine("----------------->> Menu <<------------------");
+            foreach (var i in base.product.Products)
+            {
+                Console.WriteLine($"ID : {i.Key} | Name : {i.Value.Key} | Price : {i.Value.Value}");
+            }
         }
     }
 }
