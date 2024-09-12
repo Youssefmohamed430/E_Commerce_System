@@ -8,30 +8,31 @@ using Data_type;
 
 namespace E_Commerce_System
 {
-    internal class Order : Product
+    internal class Order : Product // Mange things that is related with order 
     {
         public int no_order {  get; set; }
-        public order order1;
+        public order _order;
         public Dictionary<int, order> Data_of_orders { get; set; }
         public Order() { 
             no_order = 0;
-            order1 = new order();
+            _order = new order();
             Data_of_orders = new Dictionary<int, order>();
         }
         public void Create_order(string n , string ph ,string pay)
         {
             no_order++;
-            order1.Total_price = 0;
-            order1.BuyProduct = new SortedDictionary<int , KeyValuePair<string, int>>();
-            order1.nameofclient = n;
-            order1.phone = ph;
-            order1.paymentway = pay;
+            _order.Total_price = 0;
+            _order.BuyProduct = new SortedDictionary<int , KeyValuePair<string, int>>();
+            _order.nameofclient = n;
+            _order.phone = ph;
+            _order.paymentway = pay;
         }
 //--------------------------- Binary search ----------------------------------- 
         public order search_of_order(int noorder)
+            // To search for orders with Binary search 
         {
             int n = Data_of_orders.Count;
-            int[] keys = Data_of_orders.Keys.ToArray();//1 2 3 4 5 6
+            int[] keys = Data_of_orders.Keys.ToArray();
             int left = 0, right = n-1, midd;
             while(left <= right)
             {
@@ -46,6 +47,7 @@ namespace E_Commerce_System
             throw new Exception($"order {noorder} not found");
         }
         public void Add_product_in_order(int noorder,string nameofproduct)
+        // To add new product in old order 
         {
             var temporder = Data_of_orders[noorder]; 
             foreach (var i in base.Products)
@@ -59,21 +61,24 @@ namespace E_Commerce_System
             }   
         }   
         public void Add_product_in_order(string nameofproduct)
+         // to add products in new order
         {
             foreach(var i in base.Products)
             {
                 if(i.Value.Key == nameofproduct)
                 {
-                    order1.BuyProduct.Add (i.Key,i.Value);
-                    order1.Total_price += i.Value.Value;
+                    _order.BuyProduct.Add (i.Key,i.Value);
+                    _order.Total_price += i.Value.Value;
                 }
             }   
         }
         public void adding_orders_in_database()
+         //to store order after creating and add products in it 
         {
-            Data_of_orders.Add(no_order, order1);
+            Data_of_orders.Add(no_order, _order);
         }
         public void Delete_product_from_order(int noorder, string nameofproduct)
+            // to remove product from old order
         {
             order temporder = Data_of_orders[noorder];
             foreach (var i in base.Products)

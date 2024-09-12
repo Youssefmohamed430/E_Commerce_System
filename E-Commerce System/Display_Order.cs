@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 using Data_type;
 namespace E_Commerce_System
 {
-    internal class Display_Order : Display
+    internal class Display_Order : Display 
+        // To show anything related with order  
     {
 
         public override void display()
@@ -18,6 +19,7 @@ namespace E_Commerce_System
             int op = Convert.ToInt32(Console.ReadLine());
             if (op == 1)
             {
+                Console.Clear();
                 Console.Write("Enter Your Name : ");
                 base.client.Name = Console.ReadLine();
                 Console.Write("Enter Your Phone : ");
@@ -36,11 +38,12 @@ namespace E_Commerce_System
                 }
                 base.Neworder.adding_orders_in_database();
                 Console.Clear();
-                order lastorder = base.Neworder.order1;
+                order lastorder = base.Neworder._order;
                 Print_Reset(lastorder,base.Neworder.no_order);
             }
             else if (op == 2)
             {
+                Console.Clear();
                 Console.WriteLine("Enter Number of order : ");
                 int num = Convert.ToInt32(Console.ReadLine());
                 order searchorder = base.Neworder.search_of_order(num);
@@ -49,6 +52,7 @@ namespace E_Commerce_System
             }
             else if (op == 3)
             {
+                Console.Clear();
                 Console.WriteLine("Enter Number of order : ");
                 int num = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter Name of product : ");
@@ -60,6 +64,7 @@ namespace E_Commerce_System
             }
             else if (op == 4)
             {
+                Console.Clear();
                 Console.WriteLine("Enter Number of order : ");
                 int num = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter Name of product : ");
@@ -69,40 +74,34 @@ namespace E_Commerce_System
                 Console.Clear();
                 Print_Reset(TempOrder,num);
             }
-            else
+            else if(op == 5) 
             {
                 Console.Clear();
                 Console.WriteLine("--------------------->> Order of day <<--------------------------");
                 foreach (var i in base.Neworder.Data_of_orders)
                 {
-                    Console.WriteLine($"Number of order : {i.Key}\nName of client : {i.Value.nameofclient} | phone:{i.Value.phone}");
-                    foreach (var ii in i.Value.BuyProduct)
-                        Console.WriteLine($"id : {ii.Key} | Name of product : {ii.Value.Key} | Price : {ii.Value.Value}");
-                    Console.WriteLine($"Total Price : {i.Value.Total_price} | Payment way : {i.Value.paymentway}");
-                    Console.WriteLine("-----------------------------------------");
+                    Print_Reset(i.Value, i.Key);    
                 }
-                Console.WriteLine("Are you need to do any operation? ");
-                string opp = Console.ReadLine();
-                if (opp == "yes") { Console.Clear(); display(); }
-                else return;
             }
+            else
+            {
+                Console.Write("Invalid answer");
+                display();
+            }
+            Console.WriteLine("Are you need to do any operation? ");
+            string opp = Console.ReadLine();
+            if (opp == "yes") { Console.Clear(); display(); }
+            else return;
         }
         public void Print_Reset(order reset,int num)
         {
-            Console.WriteLine("------------------------------------- Reset ---------------------------------");
-            Console.WriteLine($"Number of order : {num}\nName : {reset.nameofclient} | Phone : {reset.phone}");
+            Console.WriteLine($"------------------------------------- Reset {num} ---------------------------------");
+            Console.WriteLine($"Name : {reset.nameofclient} | Phone : {reset.phone}");
             foreach (var i in reset.BuyProduct)
             {
                 Console.WriteLine($"Product ID : {i.Key} | Product : {i.Value.Key} | Price : {i.Value.Value}");
             }
             Console.WriteLine($"Total Price : {reset.Total_price} | Payment way : {reset.paymentway}");
-            Console.WriteLine("Are you need to do any operation? ");
-            string opp = Console.ReadLine();
-            if (opp == "yes") { Console.Clear(); display(); }
-            else {
-                Console.WriteLine("Thanks");
-                return;
-            }
         }
     }
 }

@@ -40,7 +40,7 @@ namespace E_Commerce_System
                     int id = Convert.ToInt32(Console.ReadLine());
                     base.product.Remove_product(id);
                 }
-                else {
+                else if (op == 4) {
                     Console.Clear();
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
@@ -48,11 +48,21 @@ namespace E_Commerce_System
                     int pr = Convert.ToInt32(Console.ReadLine());
                     base.product.Update_product_price(id, pr);
                 }
+                else
+                {
+                    Console.WriteLine("Invalid answer");
+                    display();
+                }
             }
-            else
+            else if(x == "no")   
             {
                 Console.Clear ();
                 menu();
+            }
+            else
+            {
+                Console.WriteLine ("Invalid answer");
+                display();
             }
             Console.WriteLine("Are you need to do anything ?");
             string ans = Console.ReadLine();
@@ -61,8 +71,13 @@ namespace E_Commerce_System
                 Console.Clear();
                 display();
             }
-            else
+            else if(ans == "no")
                 return;
+            else
+            {
+                Console.WriteLine("Invalid answer");
+                return;
+            }
         }
         public void menu()
         {
