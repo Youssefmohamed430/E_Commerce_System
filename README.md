@@ -32,6 +32,11 @@
   </li>
   <li>
     <b>SOLID Principles</b>
+    <ul>
+      <li>Single Responsibility Principle</li>
+      <li>Open/Closed Principle</li>
+      <li>Dependency Inversion Principle</li>
+    </ul>
   </li>
   <li>
     <b>Skills</b>
