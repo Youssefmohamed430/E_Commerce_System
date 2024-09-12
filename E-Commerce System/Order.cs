@@ -26,9 +26,8 @@ namespace E_Commerce_System
             order1.nameofclient = n;
             order1.phone = ph;
             order1.paymentway = pay;
-            
         }
-        //------------------- Binary search ------------------------------- 
+//--------------------------- Binary search ----------------------------------- 
         public order search_of_order(int noorder)
         {
             int n = Data_of_orders.Count;
