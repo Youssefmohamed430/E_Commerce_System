@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce_System
 {
-    internal abstract class Display
+    internal abstract class Display 
     {
         protected Client client;
         protected Product product;
