@@ -8,6 +8,7 @@
       <li>For loop and foreach</li>
       <li>If statement</li>
       <li>Methods</li>
+      <li>Recursion</li>
     </ul>
   </li>
   <li>
