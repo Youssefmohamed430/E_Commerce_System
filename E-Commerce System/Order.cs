@@ -28,15 +28,23 @@ namespace E_Commerce_System
             order1.paymentway = pay;
             
         }
+        //------------------- Binary search ------------------------------- 
         public order search_of_order(int noorder)
         {
-            foreach (var i in Data_of_orders)
+            int n = Data_of_orders.Count;
+            int[] keys = Data_of_orders.Keys.ToArray();
+            int left = 0, right = n-1, midd;
+            while(left <= right)
             {
-                if (i.Key == noorder)
-                { return i.Value; }
-                else Console.WriteLine($"Order with number {noorder} not found.");
+                midd = (left+right)/2;
+                if (keys[midd] == noorder)
+                    return Data_of_orders[midd];
+                else if(keys[midd] > noorder)
+                    left = midd+1;
+                else 
+                    right = midd-1;
             }
-            throw new Exception($"Order with number {noorder} not found.");
+            throw new Exception($"order {noorder} not found");
         }
         public void Add_product_in_order(int noorder,string nameofproduct)
         {
