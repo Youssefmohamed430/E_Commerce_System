@@ -31,14 +31,14 @@ namespace E_Commerce_System
         public order search_of_order(int noorder)
         {
             int n = Data_of_orders.Count;
-            int[] keys = Data_of_orders.Keys.ToArray();
+            int[] keys = Data_of_orders.Keys.ToArray();//1 2 3 4 5 6
             int left = 0, right = n-1, midd;
             while(left <= right)
             {
                 midd = (left+right)/2;
                 if (keys[midd] == noorder)
-                    return Data_of_orders[midd];
-                else if(keys[midd] > noorder)
+                    return Data_of_orders[keys[midd]];
+                else if(keys[midd] < noorder)
                     left = midd+1;
                 else 
                     right = midd-1;

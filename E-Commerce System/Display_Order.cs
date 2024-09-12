@@ -89,7 +89,7 @@ namespace E_Commerce_System
         }
         public void Print_Reset(order reset,int num)
         {
-            Console.WriteLine("           -------------------------Reset-----------------------           ");
+            Console.WriteLine("------------------------------------- Reset ---------------------------------");
             Console.WriteLine($"Number of order : {num}\nName : {base.client.Name} | Phone : {base.client.phone}");
             foreach (var i in reset.BuyProduct)
             {
