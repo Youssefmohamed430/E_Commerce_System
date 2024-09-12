@@ -90,7 +90,7 @@ namespace E_Commerce_System
         public void Print_Reset(order reset,int num)
         {
             Console.WriteLine("------------------------------------- Reset ---------------------------------");
-            Console.WriteLine($"Number of order : {num}\nName : {base.client.Name} | Phone : {base.client.phone}");
+            Console.WriteLine($"Number of order : {num}\nName : {reset.nameofclient} | Phone : {reset.phone}");
             foreach (var i in reset.BuyProduct)
             {
                 Console.WriteLine($"Product ID : {i.Key} | Product : {i.Value.Key} | Price : {i.Value.Value}");

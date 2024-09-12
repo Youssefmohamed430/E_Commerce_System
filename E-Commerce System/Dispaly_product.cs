@@ -55,8 +55,8 @@ namespace E_Commerce_System
                 menu();
             }
             Console.WriteLine("Are you need to do anything ?");
-            string anything = Console.ReadLine();
-            if (anything == "yes")
+            string ans = Console.ReadLine();
+            if (ans == "yes")
             {
                 Console.Clear();
                 display();
