@@ -57,20 +57,23 @@ namespace E_Commerce_System
                     temporder.BuyProduct.Add (i.Key,i.Value);
                     temporder.Total_price += i.Value.Value;
                     Data_of_orders[noorder] = temporder;
+                    return;
                 }
             }   
         }   
-        public void Add_product_in_order(string nameofproduct)
+        public bool Add_product_in_order(string nameofproduct)
          // to add products in new order
         {
             foreach(var i in base.Products)
             {
-                if(i.Value.Key == nameofproduct)
+                if (i.Value.Key == nameofproduct)
                 {
-                    _order.BuyProduct.Add (i.Key,i.Value);
+                    _order.BuyProduct.Add(i.Key, i.Value);
                     _order.Total_price += i.Value.Value;
+                    return true;
                 }
-            }   
+            }
+            return false;
         }
         public void adding_orders_in_database()
          //to store order after creating and add products in it 
