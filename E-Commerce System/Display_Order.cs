@@ -27,14 +27,17 @@ namespace E_Commerce_System
                 Console.Write("Enter Payment Way : ");
                 string way = Console.ReadLine();
                 base.Neworder.Create_order(base.client.Name, base.client.phone, way);
+                print_menu();
                 Console.Write("Enter Number of products : ");
                 int num = Convert.ToInt32(Console.ReadLine());
                 while (num > 0)
                 {
                     Console.Write("Enter The Name of product : ");
                     string namep = Console.ReadLine();
-                    base.Neworder.Add_product_in_order(namep);
-                    num--;
+                    if (base.Neworder.Add_product_in_order(namep.ToLower())) 
+                        num--;
+                    else
+                        Console.WriteLine("This product not found");
                 }
                 base.Neworder.adding_orders_in_database();
                 Console.Clear();
@@ -55,12 +58,13 @@ namespace E_Commerce_System
                 Console.Clear();
                 Console.WriteLine("Enter Number of order : ");
                 int num = Convert.ToInt32(Console.ReadLine());
+                print_menu();
                 Console.WriteLine("Enter Name of product : ");
                 string name = Console.ReadLine();
-                base.Neworder.Add_product_in_order(num, name);
+                base.Neworder.Add_product_in_order(num, name.ToLower());
                 order TempOrder = base.Neworder.search_of_order(num);
                 Console.Clear();
-                Print_Reset(TempOrder,num);
+                Print_Reset(TempOrder, num);
             }
             else if (op == 4)
             {
@@ -69,7 +73,7 @@ namespace E_Commerce_System
                 int num = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Enter Name of product : ");
                 string name = Console.ReadLine();
-                base.Neworder.Delete_product_from_order(num, name);
+                base.Neworder.Delete_product_from_order(num, name.ToLower());
                 order TempOrder = base.Neworder.search_of_order(num);
                 Console.Clear();
                 Print_Reset(TempOrder,num);
@@ -90,7 +94,7 @@ namespace E_Commerce_System
             }
             Console.WriteLine("Are you need to do any operation? ");
             string opp = Console.ReadLine();
-            if (opp == "yes") { Console.Clear(); display(); }
+            if (opp.ToLower() == "yes") { Console.Clear(); display(); }
             else return;
         }
         public void Print_Reset(order reset,int num)
@@ -102,6 +106,15 @@ namespace E_Commerce_System
                 Console.WriteLine($"Product ID : {i.Key} | Product : {i.Value.Key} | Price : {i.Value.Value}");
             }
             Console.WriteLine($"Total Price : {reset.Total_price} | Payment way : {reset.paymentway}");
+        }
+        public void print_menu()
+        {
+            Console.WriteLine("------------------------- Menu Products ------------------");
+            foreach (var i in base.product.Products)
+            {
+                Console.WriteLine($"Name : {i.Value.Key} | Price : {i.Value.Value}");
+            }
+            Console.WriteLine("----------------------------------------------------------");
         }
     }
 }
