@@ -13,15 +13,15 @@ namespace E_Commerce_System
             //-----------------------------ID---------------Name----Price-----------
             Products = new SortedDictionary<int, KeyValuePair<string, int>>
             {
-                {122 , new KeyValuePair<string, int>("Stand laptob" , 250) },
+                {122 , new KeyValuePair<string, int>("stand laptob" , 250) },
                 {123 , new KeyValuePair<string, int>("iphone 15" , 30000)  },
                 {124 , new KeyValuePair<string, int>("iphone 13" , 20000)  },
-                {125 , new KeyValuePair<string, int>("Lenovo LOQ", 35000)  },
-                {126 , new KeyValuePair<string, int>( "Headset"  , 1000)   },
-                {127 , new KeyValuePair<string, int>("Keyboard aula", 700) },
-                {128 , new KeyValuePair<string, int>("Mouse"    ,  600)    },
-                {129 , new KeyValuePair<string, int>("Samsung A15",10000)  },
-                {130 , new KeyValuePair<string, int>("Keyboard lenovo",700)}
+                {125 , new KeyValuePair<string, int>("lenovo loq", 35000)  },
+                {126 , new KeyValuePair<string, int>( "headset"  , 1000)   },
+                {127 , new KeyValuePair<string, int>("keyboard aula", 700) },
+                {128 , new KeyValuePair<string, int>("mouse"    ,  600)    },
+                {129 , new KeyValuePair<string, int>("samsung a15",10000)  },
+                {130 , new KeyValuePair<string, int>("keyboard lenovo",700)}
             };
         }
           public void Add_product(int id, string name, int price) // for employee
