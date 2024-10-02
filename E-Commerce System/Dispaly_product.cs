@@ -14,12 +14,16 @@ namespace E_Commerce_System
             string x = Console.ReadLine();
             if(x.ToLower() == "yes")
             {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("-------------------------------------------");
                 Console.WriteLine("Hello enter your option : ");
                 Console.WriteLine("1.Show Menu\n" +
                     "2.Add product\n" +
                     "3.Remove product\n" +
                     "4.Update price\n" +
                     "5.Filter Products with Price");
+                Console.WriteLine("-------------------------------------------");
                 int op = Convert.ToInt32(Console.ReadLine());
                 if (op == 1)
                 {
@@ -29,6 +33,7 @@ namespace E_Commerce_System
                 else if (op == 2)
                 {
                     Console.Clear();
+                    Console.ForegroundColor= ConsoleColor.DarkBlue;
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Enter Name : ");
@@ -40,6 +45,7 @@ namespace E_Commerce_System
                 }
                 else if (op == 3) {
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     base.product.Remove_product(id);
@@ -47,6 +53,7 @@ namespace E_Commerce_System
                 }
                 else if (op == 4) {
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.Write("Enter ID : ");
                     int id = Convert.ToInt32(Console.ReadLine());
                     Console.Write("Enter price : ");
@@ -56,12 +63,13 @@ namespace E_Commerce_System
                 }
                 else if(op == 5)
                 {
-                    Console.WriteLine("Enter Price : ");
-                    int pri = Convert.ToInt32(Console.ReadLine());
-                    var query = base.product.Products.
-                        Where(p => p.Value.Value <= pri);
-                    foreach (var item in query)
-                        Console.WriteLine($"Name : {item.Value.Key} | Price : {item.Value.Value}");
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("Enter Lower Range Price : ");
+                    int pri1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Higher Range Price : ");
+                    int pri2 = Convert.ToInt32(Console.ReadLine());
+                    base.product.Filter_Products(pri1, pri2);
                 }
                 else
                 {
@@ -72,7 +80,8 @@ namespace E_Commerce_System
             else if(x.ToLower() == "no")   
             {
                 Console.Clear ();
-                Console.WriteLine("Enter your option : \n" +
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("Enter your option : \n" +   
                     "1.Show Menu\n" +
                     "2.Filter Products with Price");
                 string ans1 = Console.ReadLine();
@@ -80,12 +89,13 @@ namespace E_Commerce_System
                     menu();
                 else
                 {
-                    Console.WriteLine("Enter Price : ");
-                    int pri = Convert.ToInt32(Console.ReadLine());
-                    var query = base.product.Products.
-                        Where(p => p.Value.Value <= pri);
-                    foreach (var item in query)
-                       Console.WriteLine($"Name : {item.Value.Key} | Price : {item.Value.Value}");
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("Enter Lower Range Price : ");
+                    int pri1 = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Enter Higher Range Price : ");
+                    int pri2 = Convert.ToInt32(Console.ReadLine());
+                    base.product.Filter_Products(pri1, pri2);
                 }
             }
             else
@@ -97,6 +107,8 @@ namespace E_Commerce_System
         }
         public void AnotherOperation()
         {
+            Console.WriteLine("-----------------------------------------");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Are you need to do anything ?");
             string ans = Console.ReadLine();
             if (ans.ToLower() == "yes")
@@ -114,6 +126,8 @@ namespace E_Commerce_System
         }
         public void menu()
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("----------------->> Menu <<------------------");
             foreach (var i in base.product.Products)
             {

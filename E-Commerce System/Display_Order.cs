@@ -14,12 +14,19 @@ namespace E_Commerce_System
 
         public override void display()
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Enter Your Option : ");
-            Console.WriteLine("1.Create order\n2.Search order\n3.Add in order\n4.Delete from order\n5.Show Orders of day");
+            Console.WriteLine("1.Create order\n" +
+                "2.Search order\n" +
+                "3.Add in order\n" +
+                "4.Delete from order\n" +
+                "5.Show Orders of day");
             int op = Convert.ToInt32(Console.ReadLine());
             if (op == 1)
             {
                 Console.Clear();
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("Enter Your Name : ");
                 base.client.Name = Console.ReadLine();
                 Console.Write("Enter Your Phone : ");
@@ -81,7 +88,7 @@ namespace E_Commerce_System
             else if(op == 5) 
             {
                 Console.Clear();
-                Console.WriteLine("--------------------->> Order of day <<--------------------------");
+                Console.WriteLine("---------------------------->> Order of day <<---------------------------------");
                 foreach (var i in base.Neworder.Data_of_orders)
                 {
                     Print_Reset(i.Value, i.Key);    
@@ -92,29 +99,39 @@ namespace E_Commerce_System
                 Console.Write("Invalid answer");
                 display();
             }
-            Console.WriteLine("Are you need to do any operation? ");
-            string opp = Console.ReadLine();
-            if (opp.ToLower() == "yes") { Console.Clear(); display(); }
-            else return;
+            AnotherOperation();
         }
         public void Print_Reset(order reset,int num)
         {
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine($"------------------------------------- Reset {num} ---------------------------------");
             Console.WriteLine($"Name : {reset.nameofclient} | Phone : {reset.phone}");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             foreach (var i in reset.BuyProduct)
             {
                 Console.WriteLine($"Product ID : {i.Key} | Product : {i.Value.Key} | Price : {i.Value.Value}");
             }
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Total Price : {reset.Total_price} | Payment way : {reset.paymentway}");
         }
         public void print_menu()
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("------------------------- Menu Products ------------------");
             foreach (var i in base.product.Products)
             {
                 Console.WriteLine($"Name : {i.Value.Key} | Price : {i.Value.Value}");
             }
             Console.WriteLine("----------------------------------------------------------");
+        }
+        public void AnotherOperation()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("---------------------------------------------");
+            Console.WriteLine("Are you need to do any operation? ");
+            string opp = Console.ReadLine();
+            if (opp.ToLower() == "yes") { Console.Clear(); display(); }
+            else return;
         }
     }
 }

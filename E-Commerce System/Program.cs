@@ -12,6 +12,7 @@ namespace E_Commerce_System
         static void Main()
         {
             Display d1, d2;
+            Console.ForegroundColor = ConsoleColor.Blue;
             Console.WriteLine("Enter your option : ");
             Console.WriteLine("1.products\n2.orders");
             int op = Convert.ToInt32(Console.ReadLine());
