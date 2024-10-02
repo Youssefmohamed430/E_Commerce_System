@@ -15,9 +15,12 @@ namespace E_Commerce_System
             if(x.ToLower() == "yes")
             {
                 Console.WriteLine("Hello enter your option : ");
-                Console.WriteLine("1.Show Menu\n2.Add product\n3.Remove product\n4.Update price");
+                Console.WriteLine("1.Show Menu\n" +
+                    "2.Add product\n" +
+                    "3.Remove product\n" +
+                    "4.Update price\n" +
+                    "5.Filter Products with Price");
                 int op = Convert.ToInt32(Console.ReadLine());
-
                 if (op == 1)
                 {
                     Console.Clear();
@@ -51,6 +54,15 @@ namespace E_Commerce_System
                     base.product.Update_product_price(id, pr);
                     menu();
                 }
+                else if(op == 5)
+                {
+                    Console.WriteLine("Enter Price : ");
+                    int pri = Convert.ToInt32(Console.ReadLine());
+                    var query = base.product.Products.
+                        Where(p => p.Value.Value <= pri);
+                    foreach (var item in query)
+                        Console.WriteLine($"Name : {item.Value.Key} | Price : {item.Value.Value}");
+                }
                 else
                 {
                     Console.WriteLine("Invalid answer");
@@ -60,13 +72,31 @@ namespace E_Commerce_System
             else if(x.ToLower() == "no")   
             {
                 Console.Clear ();
-                menu();
+                Console.WriteLine("Enter your option : \n" +
+                    "1.Show Menu\n" +
+                    "2.Filter Products with Price");
+                string ans1 = Console.ReadLine();
+                if(ans1 == "1")
+                    menu();
+                else
+                {
+                    Console.WriteLine("Enter Price : ");
+                    int pri = Convert.ToInt32(Console.ReadLine());
+                    var query = base.product.Products.
+                        Where(p => p.Value.Value <= pri);
+                    foreach (var item in query)
+                       Console.WriteLine($"Name : {item.Value.Key} | Price : {item.Value.Value}");
+                }
             }
             else
             {
                 Console.WriteLine ("Invalid answer");
                 display();
             }
+            AnotherOperation();
+        }
+        public void AnotherOperation()
+        {
             Console.WriteLine("Are you need to do anything ?");
             string ans = Console.ReadLine();
             if (ans.ToLower() == "yes")
@@ -74,7 +104,7 @@ namespace E_Commerce_System
                 Console.Clear();
                 display();
             }
-            else if(ans.ToLower() == "no")
+            else if (ans.ToLower() == "no")
                 return;
             else
             {
