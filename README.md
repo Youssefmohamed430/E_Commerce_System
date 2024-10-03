@@ -42,6 +42,14 @@
     <b>Skills</b>
     <ul><li>Git&Github</li></ul>
   </li>
+  <li>
+    <b>LINQ</b>
+    <ul>
+      <li>Select Method</li>
+      <li>GroupBy Method</li>
+      <li>Where Method</li>
+    </ul>
+  </li>
 </ul>
 <h5>What are uses to this the project? </h5>
 <ul>
@@ -51,6 +59,7 @@
     <li>Add product</li>
     <li>Delete product</li>
     <li>Update to this product</li>
+    <li>Filter Products With the Range of prices</li>
   </ul>
   <li>System to manage orders EX:</li>
   <ul>
@@ -59,5 +68,8 @@
     <li>Delete product from old order</li>
     <li>Search about orders</li>
     <li>Show orders of day</li>
+    <li>Arrange Resets With Total price</li>
+    <li>Show Income for Today</li>
+    <li>Group Resets By PaymentWay</li>
   </ul>
 </ul>
