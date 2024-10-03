@@ -21,7 +21,9 @@ namespace E_Commerce_System
                 "2.Search order\n" +
                 "3.Add in order\n" +
                 "4.Delete from order\n" +
-                "5.Show Orders of day");
+                "5.Show Orders of day\n" +
+                "6.Arrange Resets with total price\n" +
+                "7.Show Income for Today");
             int op = Convert.ToInt32(Console.ReadLine());
             if (op == 1)
             {
@@ -93,6 +95,18 @@ namespace E_Commerce_System
                 {
                     Print_Reset(i.Value, i.Key);    
                 }
+            }
+            else if(op == 6)
+            {
+                var temp = base.Neworder.ArrangeWithTotalPrice();
+                foreach (var i in temp)
+                    Print_Reset(i.Value, i.Key);
+            }
+            else if(op == 7)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\nTotal Income for Taday is : {base.Neworder.GetIncome()}\n");
             }
             else
             {

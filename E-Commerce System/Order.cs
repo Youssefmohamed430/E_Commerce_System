@@ -94,5 +94,16 @@ namespace E_Commerce_System
                 }
             }
         }
+        public List<KeyValuePair<int , order>> ArrangeWithTotalPrice()
+        {
+            var query = Data_of_orders.OrderBy(x => x.Value.Total_price).ToList();
+            return query;
+        }
+        public int GetIncome()
+        {
+            var query = Data_of_orders.Select(x => x.Value.Total_price);
+            var income = query.Aggregate(0,(a, b) => a + b);    
+            return income;
+        }
     }
 }
