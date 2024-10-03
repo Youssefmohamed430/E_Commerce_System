@@ -23,7 +23,8 @@ namespace E_Commerce_System
                 "4.Delete from order\n" +
                 "5.Show Orders of day\n" +
                 "6.Arrange Resets with total price\n" +
-                "7.Show Income for Today");
+                "7.Show Income for Today\n" +
+                "8.Group Resets By PaymentWay");
             int op = Convert.ToInt32(Console.ReadLine());
             if (op == 1)
             {
@@ -37,16 +38,17 @@ namespace E_Commerce_System
                 string way = Console.ReadLine();
                 base.Neworder.Create_order(base.client.Name, base.client.phone, way);
                 print_menu();
-                Console.Write("Enter Number of products : ");
-                int num = Convert.ToInt32(Console.ReadLine());
-                while (num > 0)
+                while (true)
                 {
-                    Console.Write("Enter The Name of product : ");
+                    Console.Write("Enter The Name of product (Enter '0' If you finished): ");
                     string namep = Console.ReadLine();
-                    if (base.Neworder.Add_product_in_order(namep.ToLower())) 
-                        num--;
-                    else
-                        Console.WriteLine("This product not found");
+                    if (namep != "0") {
+                        if (base.Neworder.Add_product_in_order(namep.ToLower()))
+                            continue;
+                        else
+                            Console.WriteLine("This product not found");
+                    }
+                    else break;
                 }
                 base.Neworder.adding_orders_in_database();
                 Console.Clear();
@@ -98,6 +100,7 @@ namespace E_Commerce_System
             }
             else if(op == 6)
             {
+                Console.Clear();
                 var temp = base.Neworder.ArrangeWithTotalPrice();
                 foreach (var i in temp)
                     Print_Reset(i.Value, i.Key);
@@ -107,6 +110,27 @@ namespace E_Commerce_System
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"\nTotal Income for Taday is : {base.Neworder.GetIncome()}\n");
+            }
+            else if(op == 8)
+            {
+                Console.Clear();
+                var temp = base.Neworder.GroupByPaymentWay();
+                var Dic = base.Neworder.Data_of_orders;
+                foreach (var group in temp)
+                {
+                    Console.ForegroundColor= ConsoleColor.Blue;
+                    string key = group.Key;
+                    int boxWidth = Math.Max(40, key.Length + 10);  
+                    int padding = (boxWidth - key.Length) / 2;
+                    string formattedKey = key.PadLeft(key.Length + padding).PadRight(boxWidth);
+                    Console.WriteLine($"\t\t\t\t\t┌{new string('─', boxWidth)}┐");
+                    Console.WriteLine($"\t\t\t\t\t│{formattedKey}│");
+                    Console.WriteLine($"\t\t\t\t\t└{new string('─', boxWidth)}┘");
+                    foreach (var item in group)
+                    {
+                        Print_Reset(item, Dic.FirstOrDefault(x => x.Value.Equals(item)).Key);
+                    }
+                }
             }
             else
             {

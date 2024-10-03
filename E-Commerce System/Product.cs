@@ -23,7 +23,7 @@ namespace E_Commerce_System
                 {127 , new KeyValuePair<string, int>("mouse"    ,  600  )  },
                 {128 , new KeyValuePair<string, int>("keyboard lenovo",700)},
                 {129 , new KeyValuePair<string, int>("stand laptob",250 )  },
-                {130 , new KeyValuePair<string, int>("Mouse Pad" , 100  )  }
+                {130 , new KeyValuePair<string, int>("mouse pad" , 100  )  }
             };
         }
           public void Add_product(int id, string name, int price) // for employee

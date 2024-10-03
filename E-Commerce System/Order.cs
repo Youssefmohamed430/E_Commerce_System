@@ -27,10 +27,11 @@ namespace E_Commerce_System
             _order.phone = ph;
             _order.paymentway = pay;
         }
-//--------------------------- Binary search ----------------------------------- 
         public order search_of_order(int noorder)
             // To search for orders with Binary search 
         {
+            //-------------------- Binary search --------------------------- 
+
             int n = Data_of_orders.Count;
             int[] keys = Data_of_orders.Keys.ToArray();
             int left = 0, right = n-1, midd;
@@ -104,6 +105,12 @@ namespace E_Commerce_System
             var query = Data_of_orders.Select(x => x.Value.Total_price);
             var income = query.Aggregate(0,(a, b) => a + b);    
             return income;
+        }
+        public List<IGrouping<string,order>> GroupByPaymentWay()
+        {
+            var query = Data_of_orders.Select(x => x.Value);
+            var Groups = query.GroupBy(a => a.paymentway).ToList();
+            return Groups;
         }
     }
 }
